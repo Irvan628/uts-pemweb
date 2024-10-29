@@ -9,7 +9,6 @@ $result = $conn->query($sql);
 <div id="about" class="container">
     <?php
     if ($result->num_rows > 0) {
-        // Output data dari setiap baris
         while($row = $result->fetch_assoc()) {
             echo '<div class="col-md-6">';
             echo '<div class="row">';
@@ -26,7 +25,7 @@ $result = $conn->query($sql);
     
     <!-- Menampilkan gambar Irvan dengan ukuran yang diperkecil -->
     <div class="col-md-6 wow fadeInUp myphoto" data-wow-duration="4s">
-        <img src="img/fotoirvan.png" alt="Irvan" style="width: 200px; height: auto;">
+        <img src="img/fotoirvan.png" alt="Irvan" style="width: 60%; height: auto;">
     </div>
 </div>
 

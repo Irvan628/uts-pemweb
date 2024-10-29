@@ -2,17 +2,11 @@
 // Sertakan koneksi ke database dan file header
 include 'koneksi.php';
 include 'header.php';
-
-// Proses form ketika data dikirim melalui metode POST
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    // Mengambil dan menyaring data dari form
     $nama = filter_var($_POST['nama'] ?? '', FILTER_SANITIZE_STRING);
     $email = filter_var($_POST['email'] ?? '', FILTER_SANITIZE_EMAIL);
     $testimoni = filter_var($_POST['testimoni'] ?? '', FILTER_SANITIZE_STRING);
-
-    // Validasi untuk memastikan tidak ada field kosong
     if (!empty($nama) && !empty($email) && !empty($testimoni)) {
-        // Menggunakan prepared statements untuk mencegah SQL Injection
         $stmt = $conn->prepare("INSERT INTO testimonies (nama, email, testimoni) VALUES (?, ?, ?)");
         $stmt->bind_param("sss", $nama, $email, $testimoni);
 
